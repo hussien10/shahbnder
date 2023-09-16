@@ -1,0 +1,108 @@
+<!-- <div class="products-title">
+  <h2>All Products</h2>
+  <div class="d-flex align-items-center justify-content-start">
+    <div class="filter">
+      <select class="form-select" aria-label="Default select example" (change)="filterProducts($event)">
+        <option value="all" selected>all </option>
+        <option *ngFor="let category of categories" [value]="category">{{category | uppercase}}</option>
+      </select>
+    </div>
+    <div class="sort ms-3">
+      <button class="btn btn-primary  py-1 px-3" (click)="sortProducts()"> sort</button>
+    </div>
+  </div>
+</div>
+<div class="products-grid" *ngIf="!loading">
+  <div class="row">
+    <div *ngFor="let item of products" class="col-lg-3 col-md-4 col-12 mb-3">
+      <div class="product-item">
+        <div class="card">
+          <img [src]="item.image" class="card-img-top" [alt]="item.title" />
+          <div class="card-body">
+            <h5 class="card-title">{{item.title}}</h5>
+            <p class="card-text">
+              {{item.description}}
+            </p>
+            <div class="price-cat">
+              <div class="cat">
+                <a
+                  routerLink="/products"
+                  class="btn btn-primary rounded-pill py-1 px-3"
+                  >{{item.category}}</a
+                >
+              </div>
+              <div class="price">
+                <span class="badge rounded-pill py-2 px-4 bg-success"
+                  >{{item.price}} LE</span
+                >
+              </div>
+            </div>
+            <a routerLink="/cart" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="bg-light py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0">
+        <a href="index.html">Home</a> <span class="mx-2 mb-0">/</span>
+        <strong class="text-black">Shop</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section" *ngIf="!loading">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-9 order-2">
+
+        <div class="row mb-5">
+          <div
+            class="col-sm-6 col-lg-4 mb-4"
+            *ngFor="let product of products"
+            data-aos="fade-up"
+          >
+            <div class="custom-card block-4 text-center border">
+              <figure class="block-4-image">
+                <a routerLink="'/product-details'{item.id}"
+                  ><img
+                    [src]="product.image"
+                    [alt]="product.title"
+                    class="img-fluid"
+                /></a>
+              </figure>
+              <div class="block-4-text p-4">
+                <h3>
+                  <a
+                    class="card-title"
+                    [routerLink]="['/product-details', product.id]"
+                    >{{ product.title }}</a
+                  >
+                </h3>
+                <p class="mb-0 card-text">{{ product.description }}</p>
+                <p class="text-primary font-weight-bold">{{ product.price }} LE</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 order-1 mb-5 mb-md-0">
+        <div class="sidebar border p-4 rounded mb-4">
+          <h3 class=" mb-3 h6 text-uppercase text-black d-block">Categories</h3>
+          <select class="form-select" size="3" aria-label="Size 3 select example" (change)="filterProducts($event)">
+            <option value="all">All</option>
+            <option *ngFor="let category of categories" [value]="category">{{category | uppercase}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="spinner-wrapper" *ngIf="loading">
+  <app-spinner></app-spinner>
+</section>
